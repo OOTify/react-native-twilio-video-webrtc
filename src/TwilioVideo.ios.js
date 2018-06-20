@@ -145,6 +145,13 @@ export default class extends Component {
         return TWVideoModule.setLocalVideoEnabled(enabled)
     }
 
+    /**
+     * Enable or disable local video
+     */
+    setLocalVideoEnabled (enabled) {
+        return TWVideoModule.setLocalVideoEnabled(enabled)
+    }
+
   /**
    * Enable or disable local video
    */
