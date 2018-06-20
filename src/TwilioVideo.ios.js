@@ -139,10 +139,10 @@ export default class extends Component {
   }
 
     /**
-     * Enable or disable local video
+     * Enable or disable voice speaker
      */
-    setLocalVideoEnabled (enabled) {
-        return TWVideoModule.setLocalVideoEnabled(enabled)
+    setVoiceSpeakerEnabled (enabled) {
+        return TWVideoModule.setVoiceSpeakerEnabled(enabled)
     }
 
     /**
