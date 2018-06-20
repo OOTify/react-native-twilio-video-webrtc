@@ -41,6 +41,7 @@ public class CustomTwilioVideoViewManager extends SimpleViewManager<CustomTwilio
     private static final int TOGGLE_SOUND = 5;
     private static final int GET_STATS = 6;
     private static final int DISABLE_OPENSL_ES = 7;
+    private static final int TOGGLE_SPEAKER = 8;
 
     @Override
     public String getName() {
@@ -80,6 +81,10 @@ public class CustomTwilioVideoViewManager extends SimpleViewManager<CustomTwilio
             case DISABLE_OPENSL_ES:
                 view.disableOpenSLES();
                 break;
+            case TOGGLE_SPEAKER:
+                Boolean voiceSpeakerEnabled = args.getBoolean(0);
+                view.toggleSpeaker(voiceSpeakerEnabled);
+                break;
         }
     }
 
@@ -109,14 +114,15 @@ public class CustomTwilioVideoViewManager extends SimpleViewManager<CustomTwilio
     @Override
     @Nullable
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of(
-                "connectToRoom", CONNECT_TO_ROOM,
-                "disconnect", DISCONNECT,
-                "switchCamera", SWITCH_CAMERA,
-                "toggleVideo", TOGGLE_VIDEO,
-                "toggleSound", TOGGLE_SOUND,
-                "getStats", GET_STATS,
-                "disableOpenSLES", DISABLE_OPENSL_ES
-        );
+        Map map = MapBuilder.of();
+        map.put("connectToRoom", CONNECT_TO_ROOM);
+        map.put("disconnect", DISCONNECT);
+        map.put("switchCamera", SWITCH_CAMERA);
+        map.put("toggleVideo", TOGGLE_VIDEO);
+        map.put("toggleSound", TOGGLE_SOUND);
+        map.put("getStats", GET_STATS);
+        map.put("disableOpenSLES", DISABLE_OPENSL_ES);
+        map.put("toggleSpeaker", TOGGLE_SPEAKER);
+        return map;
     }
 }

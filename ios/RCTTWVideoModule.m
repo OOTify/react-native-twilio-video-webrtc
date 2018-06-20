@@ -139,6 +139,12 @@ RCT_REMAP_METHOD(setLocalVideoEnabled, enabled:(BOOL)enabled setLocalVideoEnable
   resolve(@(enabled));
 }
 
+RCT_REMAP_METHOD(setVoiceSpeakerEnabled, enabled:(BOOL)enabled setVoiceSpeakerEnabledWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    [TVIAudioController sharedController].audioOutput = enabled ? TVIAudioOutputVoiceChatDefault : TVIAudioOutputVideoChatDefault;
+    
+    resolve(@(enabled));
+}
 
 RCT_EXPORT_METHOD(flipCamera) {
   if (self.camera.source == TVICameraCaptureSourceFrontCamera) {

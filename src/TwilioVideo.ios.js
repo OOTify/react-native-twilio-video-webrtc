@@ -123,6 +123,7 @@ export default class extends Component {
     this.flipCamera = this.flipCamera.bind(this)
     this.connect = this.connect.bind(this)
     this.disconnect = this.disconnect.bind(this)
+    this.setVoiceSpeakerEnabled = this.setVoiceSpeakerEnabled.bind(this)
   }
 
   componentWillMount () {
@@ -136,6 +137,13 @@ export default class extends Component {
     this._stopLocalVideo()
     this._stopLocalAudio()
   }
+
+    /**
+     * Enable or disable local video
+     */
+    setLocalVideoEnabled (enabled) {
+        return TWVideoModule.setLocalVideoEnabled(enabled)
+    }
 
   /**
    * Enable or disable local video

@@ -412,6 +412,10 @@ public class CustomTwilioVideoView extends View implements LifecycleEventListene
         }
     }
 
+    public void toggleSpeaker(boolean enabled) {
+        audioManager = (AudioManager) themedReactContext.getSystemService(Context.AUDIO_SERVICE);
+        audioManager.setSpeakerphoneOn(!enabled);
+    }
 
     private void convertBaseTrackStats(BaseTrackStats bs, WritableMap result) {
         result.putString("codec", bs.codec);
