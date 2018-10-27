@@ -243,19 +243,19 @@ public class CustomTwilioVideoView extends View implements LifecycleEventListene
          * Release the local video track before going in the background. This ensures that the
          * camera can be used by other applications while this app is in the background.
          */
-        if (localVideoTrack != null) {
-            /*
-             * If this local video track is being shared in a Room, remove from local
-             * participant before releasing the video track. Participants will be notified that
-             * the track has been removed.
-             */
-            if (localParticipant != null) {
-                localParticipant.removeVideoTrack(localVideoTrack);
-            }
-
-            localVideoTrack.release();
-            localVideoTrack = null;
-        }
+//        if (localVideoTrack != null) {
+////            /*
+////             * If this local video track is being shared in a Room, remove from local
+////             * participant before releasing the video track. Participants will be notified that
+////             * the track has been removed.
+////             */
+////            if (localParticipant != null) {
+////                localParticipant.removeVideoTrack(localVideoTrack);
+////            }
+////
+////            localVideoTrack.release();
+////            localVideoTrack = null;
+////        }
     }
 
     @Override
