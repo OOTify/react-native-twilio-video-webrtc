@@ -11,15 +11,22 @@
 @implementation TVIParticipant(RCTTWSerializable)
 
 - (id)toJSON {
-  return @{ @"identity": self.identity };
+  return @{
+    @"sid": self.sid,
+    @"identity": self.identity
+  };
 }
 
 @end
 
-@implementation TVITrack(RCTTWSerializable)
+@implementation TVITrackPublication(RCTTWSerializable)
 
 - (id)toJSON {
-  return @{ @"trackId": self.trackId };
+  return @{
+    @"trackSid": self.trackSid,
+    @"trackName": self.trackName,
+    @"enabled": @(self.trackEnabled)
+  };
 }
 
 @end

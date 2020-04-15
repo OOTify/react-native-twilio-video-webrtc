@@ -14,29 +14,41 @@ import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
-public class TwilioRemotePreviewManager extends ViewGroupManager<TwilioRemotePreview> {
+import org.webrtc.RendererCommon;
+
+
+public class TwilioRemotePreviewManager extends SimpleViewManager<TwilioRemotePreview> {
 
     public static final String REACT_CLASS = "RNTwilioRemotePreview";
-    public String myTrackId = "";
+    public String myTrackSid = "";
 
     @Override
     public String getName() {
         return REACT_CLASS;
     }
 
+    @ReactProp(name = "scaleType")
+    public void setScaleType(TwilioRemotePreview view, @Nullable String scaleType) {
 
-    @ReactProp(name = "trackId")
-    public void setTrackId(TwilioRemotePreview view, @Nullable String trackId) {
+      if (scaleType.equals("fit")) {
+        view.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FIT);
+      } else {
+        view.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FILL);
+      }
+    }
 
-        Log.i("CustomTwilioVideoView", "Initialize Twilio REMOTEEEEEEEEE");
-        Log.i("CustomTwilioVideoView", trackId);
-        myTrackId = trackId;
-        CustomTwilioVideoView.registerPrimaryVideoView(view.getSurfaceViewRenderer(), trackId);
+    @ReactProp(name = "trackSid")
+    public void setTrackId(TwilioRemotePreview view, @Nullable String trackSid) {
+
+        Log.i("CustomTwilioVideoView", "Initialize Twilio REMOTE");
+        Log.i("CustomTwilioVideoView", trackSid);
+        myTrackSid = trackSid;
+        CustomTwilioVideoView.registerPrimaryVideoView(view.getSurfaceViewRenderer(), trackSid);
     }
 
 
     @Override
     protected TwilioRemotePreview createViewInstance(ThemedReactContext reactContext) {
-        return new TwilioRemotePreview(reactContext, myTrackId);
+        return new TwilioRemotePreview(reactContext, myTrackSid);
     }
 }
