@@ -14,7 +14,10 @@ import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
-public class TwilioRemotePreviewManager extends ViewGroupManager<TwilioRemotePreview> {
+import org.webrtc.RendererCommon;
+
+
+public class TwilioRemotePreviewManager extends SimpleViewManager<TwilioRemotePreview> {
 
     public static final String REACT_CLASS = "RNTwilioRemotePreview";
     public String myTrackSid = "";
@@ -24,6 +27,15 @@ public class TwilioRemotePreviewManager extends ViewGroupManager<TwilioRemotePre
         return REACT_CLASS;
     }
 
+    @ReactProp(name = "scaleType")
+    public void setScaleType(TwilioRemotePreview view, @Nullable String scaleType) {
+
+      if (scaleType.equals("fit")) {
+        view.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FIT);
+      } else {
+        view.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FILL);
+      }
+    }
 
     @ReactProp(name = "trackSid")
     public void setTrackId(TwilioRemotePreview view, @Nullable String trackSid) {
