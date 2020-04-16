@@ -10,14 +10,14 @@ package com.twiliorn.library;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.facebook.react.uimanager.SimpleViewManager;
+import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
 import org.webrtc.RendererCommon;
 
 
-public class TwilioRemotePreviewManager extends SimpleViewManager<TwilioRemotePreview> {
+public class TwilioRemotePreviewManager extends ViewGroupManager<TwilioRemotePreview> {
 
     public static final String REACT_CLASS = "RNTwilioRemotePreview";
     public String myTrackSid = "";
